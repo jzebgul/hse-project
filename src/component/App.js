@@ -7,7 +7,6 @@ import Register from './Registration'
 import Dashboard from './Dashboard'
 import { AuthProvider } from './Auth'
 import PrivateRoute from './PrivateRoute'
-
 const App = () => {
   return (
     <AuthProvider>

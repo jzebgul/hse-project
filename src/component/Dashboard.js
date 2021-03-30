@@ -36,7 +36,7 @@ const styles = theme => ({
 const Dashboard = props => {
 
     const { classes } = props
-    const onSignout = async () => {
+    const onSignout = async (e) => {
         await firebase.auth().signOut()
         props.history.push('/')
     }

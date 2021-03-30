@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import { Typography, Paper, Button, FormControl, Input, InputLabel } from '@material-ui/core'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { Link, withRouter } from 'react-router-dom'
 import { useState } from 'react';
 import firebase from './firebase';
+import authReducer from '../reducers/auth';
 
 const styles = theme => ({
     main: {
@@ -32,18 +33,24 @@ const styles = theme => ({
         marginTop: theme.spacing(3),
     },
 });
-
+const initialState = {}
 const Login = props => {
     const { classes } = props
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [state, dispatch] = useReducer(authReducer, initialState)
     const onLogin = async () => {
-        try {
-            await firebase.auth().signInWithEmailAndPassword(email, password)
-            props.history.push('/dashboard')
-        } catch (error) {
-            console.error(error)
-        }
+
+        // try {
+        //     await firebase.auth().signInWithEmailAndPassword(email, password)
+        //     props.history.push('/dashboard')
+        // } catch (error) {
+        //     console.error(error)
+        // }
+        dispatch({ type: 'USER_LOGIN' })
+        setPassword('');
+        setEmail('');
+
     }
     return (
         <main className={classes.main}>
@@ -66,7 +73,8 @@ const Login = props => {
                         variant="contained"
                         color="primary"
                         onClick={onLogin}
-                        className={classes.submit}>
+                        className={classes.submit}
+                    >
                         Sign in
           			</Button>
                     <Button
