@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Typography, Paper, Button, FormControl, Input, InputLabel } from '@material-ui/core'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { Link, withRouter } from 'react-router-dom'
-import firebase from './firebase'
+import { useDispatch } from 'react-redux';
+import { startRegister } from '../actions/auth';
 
 const styles = theme => ({
     main: {
@@ -34,21 +35,13 @@ const styles = theme => ({
 
 const Register = (props) => {
     const { classes } = props
-
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const dispatch = useDispatch();
 
     const onRegister = async () => {
-        try {
-            await firebase.auth().createUserWithEmailAndPassword(email, password)
-            await firebase.auth().currentUser.updateProfile({
-                displayName: name
-            })
-            props.history.push('/dashboard')
-        } catch (error) {
-            console.error(error)
-        }
+        dispatch(startRegister(email, password));
     }
 
     return (
@@ -77,10 +70,10 @@ const Register = (props) => {
                         variant="contained"
                         color="primary"
                         onClick={onRegister}
-
-                        className={classes.submit}>
+                        className={classes.submit}
+                    >
                         Register
-          </Button>
+                    </Button>
 
                     <Button
                         type="submit"
@@ -91,7 +84,7 @@ const Register = (props) => {
                         to="/login"
                         className={classes.submit}>
                         Go back to Login
-          </Button>
+                    </Button>
                 </form>
             </Paper>
         </main>

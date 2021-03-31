@@ -1,10 +1,10 @@
-import React, { useReducer } from 'react'
-import { Typography, Paper, Button, FormControl, Input, InputLabel } from '@material-ui/core'
+import React, { useReducer } from 'react';
+import { Typography, Paper, Button, FormControl, Input, InputLabel } from '@material-ui/core';
 import withStyles from '@material-ui/core/styles/withStyles'
 import { Link, withRouter } from 'react-router-dom'
 import { useState } from 'react';
-import firebase from './firebase';
-import authReducer from '../reducers/auth';
+import { useDispatch } from 'react-redux';
+import { startLogin } from '../actions/auth';
 
 const styles = theme => ({
     main: {
@@ -33,23 +33,18 @@ const styles = theme => ({
         marginTop: theme.spacing(3),
     },
 });
-const initialState = {}
+
 const Login = props => {
     const { classes } = props
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [state, dispatch] = useReducer(authReducer, initialState)
-    const onLogin = async () => {
+    const dispatch = useDispatch();
 
-        // try {
-        //     await firebase.auth().signInWithEmailAndPassword(email, password)
-        //     props.history.push('/dashboard')
-        // } catch (error) {
-        //     console.error(error)
-        // }
-        dispatch({ type: 'USER_LOGIN' })
-        setPassword('');
-        setEmail('');
+
+    const onLogin = async () => {
+        dispatch(startLogin(email, password));
+        // setPassword('');
+        // setEmail('');
 
     }
     return (
