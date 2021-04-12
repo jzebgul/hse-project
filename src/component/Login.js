@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import { Typography, Paper, Button, FormControl, Input, InputLabel } from '@material-ui/core';
 import withStyles from '@material-ui/core/styles/withStyles'
 import { Link, withRouter } from 'react-router-dom'
@@ -45,6 +45,7 @@ const Login = props => {
         dispatch(startLogin(email, password));
         // setPassword('');
         // setEmail('');
+        props.history.push('/dashboard');
 
     }
     return (

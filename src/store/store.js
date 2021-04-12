@@ -4,7 +4,7 @@ import authReducer from '../reducers/auth';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export default () => {
+const store = () => {
     const store = createStore(
         combineReducers({
             auth: authReducer,
@@ -14,3 +14,4 @@ export default () => {
 
     return store;
 };
+export default store;

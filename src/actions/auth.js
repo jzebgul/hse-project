@@ -1,5 +1,5 @@
 import firebase from '../firebase/firebase';
-
+import { history } from '../component/App';
 export const login = (user) => ({
     type: 'LOGIN',
     user
@@ -8,35 +8,26 @@ export const login = (user) => ({
 export const startLogin = (email, password) => {
     return () => {
         return firebase.auth().signInWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                // Signed in
-                var user = userCredential.user;
-                console.log(user);
-                // ...
-            })
-            .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                console.log(errorMessage);
-            });
     };
 };
 
 export const startRegister = (email, password) => {
     return () => {
         return firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then((userCredential) => {
+            .then((currentUser) => {
                 // Signed in
-                var user = userCredential.user;
+                var user = currentUser;
+
                 console.log(user);
+                history.push('/dashboard')
                 // ...
             })
             .catch((error) => {
-                var errorCode = error.code;
                 var errorMessage = error.message;
                 console.log(errorMessage);
                 // ..
             });
+
     };
 };
 
@@ -49,3 +40,4 @@ export const startLogout = () => {
         return firebase.auth().signOut();
     };
 };
+

@@ -4,7 +4,7 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import { Link, withRouter } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { startRegister } from '../actions/auth';
-
+import firebase from '../firebase/firebase';
 const styles = theme => ({
     main: {
         width: 'auto',
@@ -33,6 +33,8 @@ const styles = theme => ({
     },
 })
 
+
+
 const Register = (props) => {
     const { classes } = props
     const [name, setName] = useState('')
@@ -40,8 +42,10 @@ const Register = (props) => {
     const [password, setPassword] = useState('')
     const dispatch = useDispatch();
 
+
     const onRegister = async () => {
         dispatch(startRegister(email, password));
+        props.history.push('/dashboard')
     }
 
     return (
@@ -50,15 +54,19 @@ const Register = (props) => {
                 <Typography component="h1" variant="h5">
                     Register Account
        			</Typography>
+
                 <form className={classes.form} onSubmit={e => e.preventDefault() && false}>
+
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="name">Name</InputLabel>
                         <Input id="name" name="name" autoComplete="off" autoFocus value={name} onChange={e => setName(e.target.value)} />
                     </FormControl>
+
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="email">Email Address</InputLabel>
                         <Input id="email" name="email" autoComplete="off" value={email} onChange={e => setEmail(e.target.value)} />
                     </FormControl>
+
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="password">Password</InputLabel>
                         <Input name="password" type="password" id="password" autoComplete="off" value={password} onChange={e => setPassword(e.target.value)} />
