@@ -3,7 +3,7 @@ import { Typography, Paper, Button } from '@material-ui/core'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { Link, withRouter } from 'react-router-dom'
 import firebase from '../firebase/firebase';
-import { Name } from '../component/Registration';
+
 const styles = theme => ({
     main: {
         width: 'auto',
@@ -44,9 +44,7 @@ const Dashboard = props => {
         <main className={classes.main}>
             <Paper className={classes.paper}>
                 <Typography component="h1" variant="h5">
-                    {`Welcome User ${firebase.auth().currentUser.updateProfile({
-                        displayName: name
-                    })}`}
+                    {`Welcome User ${firebase.auth().currentUser.displayName}`}
                 </Typography>
                 <Button
                     type="submit"

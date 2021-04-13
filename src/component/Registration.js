@@ -43,8 +43,10 @@ const Register = (props) => {
     const dispatch = useDispatch();
 
 
+
     const onRegister = async () => {
         dispatch(startRegister(email, password));
+
         props.history.push('/dashboard')
     }
 

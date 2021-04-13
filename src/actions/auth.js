@@ -8,6 +8,7 @@ export const login = (user) => ({
 export const startLogin = (email, password) => {
     return () => {
         return firebase.auth().signInWithEmailAndPassword(email, password)
+
     };
 };
 
@@ -17,7 +18,6 @@ export const startRegister = (email, password) => {
             .then((currentUser) => {
                 // Signed in
                 var user = currentUser;
-
                 console.log(user);
                 history.push('/dashboard')
                 // ...
@@ -27,6 +27,7 @@ export const startRegister = (email, password) => {
                 console.log(errorMessage);
                 // ..
             });
+
 
     };
 };
