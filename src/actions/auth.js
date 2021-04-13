@@ -7,18 +7,32 @@ export const login = (user) => ({
 
 export const startLogin = (email, password) => {
     return () => {
+
         return firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(() => {
+                history.push('/dashboard');
+            });
 
     };
 };
 
-export const startRegister = (email, password) => {
+export const startRegister = (name, email, password) => {
     return () => {
         return firebase.auth().createUserWithEmailAndPassword(email, password)
             .then((currentUser) => {
                 // Signed in
-                var user = currentUser;
-                console.log(user);
+                const user = firebase.auth().currentUser;
+
+                user.updateProfile({
+                    displayName: name,
+                }).then(function () {
+                    console.log('Updated');
+                    // Update successful.
+                }).catch(function (error) {
+                    // An error happened.
+                    console.log(error);
+                });
+
                 history.push('/dashboard')
                 // ...
             })

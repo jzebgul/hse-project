@@ -45,7 +45,7 @@ const Register = (props) => {
 
 
     const onRegister = async () => {
-        dispatch(startRegister(email, password));
+        dispatch(startRegister(name, email, password));
 
         props.history.push('/dashboard')
     }

@@ -22,10 +22,6 @@ const App = () => {
         </Switch>
       </Router>
     </AuthProvider>
-
-
-
-
   )
 }
 
