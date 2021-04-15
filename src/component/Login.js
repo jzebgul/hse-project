@@ -57,11 +57,11 @@ const Login = props => {
                 <form className={classes.form} onSubmit={e => e.preventDefault() && false}>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="email">Email Address</InputLabel>
-                        <Input id="email" name="email" autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <Input id="email" name="email" autoComplete="off" value={email} onChange={e => setEmail(e.target.value)} />
                     </FormControl>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="password">Password</InputLabel>
-                        <Input name="password" type="password" id="password" autoComplete="off" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <Input name="password" type="password" id="password" autoComplete="off" value={password} onChange={e => setPassword(e.target.value)} />
                     </FormControl>
                     <Button
                         type="submit"

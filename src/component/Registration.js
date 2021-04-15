@@ -4,7 +4,6 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import { Link, withRouter } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { startRegister } from '../actions/auth';
-import firebase from '../firebase/firebase';
 const styles = theme => ({
     main: {
         width: 'auto',
@@ -46,7 +45,6 @@ const Register = (props) => {
 
     const onRegister = async () => {
         dispatch(startRegister(name, email, password));
-
         props.history.push('/dashboard')
     }
 

@@ -1,5 +1,5 @@
 import firebase from '../firebase/firebase';
-import { history } from '../component/App';
+//import { history } from '../component/App';
 export const login = (user) => ({
     type: 'LOGIN',
     user
@@ -10,7 +10,7 @@ export const startLogin = (email, password) => {
 
         return firebase.auth().signInWithEmailAndPassword(email, password)
             .then(() => {
-                history.push('/dashboard');
+                // history.push('/dashboard');
             });
 
     };
@@ -33,7 +33,7 @@ export const startRegister = (name, email, password) => {
                     console.log(error);
                 });
 
-                history.push('/dashboard')
+                // history.push('/dashboard')
                 // ...
             })
             .catch((error) => {
@@ -53,6 +53,7 @@ export const logout = () => ({
 export const startLogout = () => {
     return () => {
         return firebase.auth().signOut();
+
     };
 };
 
