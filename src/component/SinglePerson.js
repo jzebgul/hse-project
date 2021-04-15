@@ -1,9 +1,11 @@
 import React from 'react';
 
-const SinglePerson = ({ name }) => {
+const SinglePerson = ({ name, removeName, id, text }) => {
     return (
         <div>
-            <h4>{name}</h4>
+            <h1>{name}</h1>
+            <p>{text}</p>
+            <button onClick={() => removeName(id)}>x</button>
         </div>
     );
 };

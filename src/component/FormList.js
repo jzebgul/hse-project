@@ -1,12 +1,12 @@
 import React from 'react';
 import SinglePerson from './SinglePerson';
-const FormList = ({ name }) => {
+const FormList = ({ list, removeName, id }) => {
     return (
         <div>
-            {name.map((person, index) => {
+            {list.map((person) => {
 
                 return (
-                    <SinglePerson {...person} key={index} />
+                    <SinglePerson {...person} key={id} removeName={removeName} />
                 );
             })}
         </div>
