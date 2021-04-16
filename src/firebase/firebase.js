@@ -1,19 +1,21 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import "firebase/firestore";
-//import * as firebase from 'firebase';
+import "firebase/database"
 
+var firebaseConfig = {
+    apiKey: "AIzaSyAM7bXNJc-BlyLjUK23laYxDXSdqrg5m0A",
+    authDomain: "hse-project-aefd3.firebaseapp.com",
+    databaseURL: "https://hse-project-aefd3-default-rtdb.firebaseio.com",
+    projectId: "hse-project-aefd3",
+    storageBucket: "hse-project-aefd3.appspot.com",
+    messagingSenderId: "651568614628",
+    appId: "1:651568614628:web:2d0e91e352bbe6ef6970f1"
+};
 
-const config = {
-    apiKey: process.env.REACT_APP_FIREBASE_KEY,
-    authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
-    appId: process.env.REACT_APP_FIREBASE_APP_ID,
-}
+const firebase = app.initializeApp(firebaseConfig);
 
-console.log(process.env);
-const firebase = app.initializeApp(config)
-//const database = firebase.database();
-export default firebase;
+// Get a reference to the database service
+var reference =  firebase.database().ref();
+
+export { firebase, reference as default };
