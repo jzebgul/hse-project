@@ -32,16 +32,12 @@ const styles = theme => ({
     },
 })
 
-
-
 const Register = (props) => {
     const { classes } = props
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const dispatch = useDispatch();
-
-
 
     const onRegister = async () => {
         dispatch(startRegister(name, email, password));
