@@ -4,9 +4,8 @@ const FormList = ({ list, removeName, id }) => {
     return (
         <div>
             {list.map((person) => {
-
                 return (
-                    <SinglePerson {...person} key={id} removeName={removeName} />
+                    <SinglePerson person={person} key={id} removeName={removeName} />
                 );
             })}
         </div>
