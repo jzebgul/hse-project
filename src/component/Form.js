@@ -27,7 +27,6 @@ const Form = () => {
         if (name) {
             setPerson({ id: new Date().getTime().toString(), name: name, text: text, date: new Date() });
             addPerson(person);
-
             setName('');
             setText('');
         } else {
