@@ -1,14 +1,28 @@
-import React from 'react';
-import SinglePerson from './SinglePerson';
-const FormList = ({ list, removeName, id }) => {
+import React, { useState, useEffect } from "react"
+import { useSelector, useDispatch } from 'react-redux';
+import AddTasksForm from "./AddTasks";
+import TaskItem from "./TaskItem";
+import database from '../firebase/firebase';
+
+// import reducer from '../reducer';
+
+const TasksList = () => {
+    const tasks = useSelector(state => state.tasks);
+    const userId = useSelector(state => state.auth.uid);
+
     return (
         <div>
-            {list.map((person) => {
-                return (
-                    <SinglePerson person={person} key={id} removeName={removeName} />
-                );
-            })}
+            <div>Todo List Items</div>
+            <ul>
+                {tasks !== null ? Object.values(tasks).map((task, index) => (
+                    <TaskItem
+                        task={task}
+                        index={index}
+                    />
+                )) : ''
+                }
+            </ul>
         </div>
-    )
+    );
 }
-export default FormList;
+export default TasksList;

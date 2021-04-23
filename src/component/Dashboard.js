@@ -2,9 +2,9 @@ import React from 'react'
 import { Typography, Paper, Button } from '@material-ui/core'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { Link, withRouter } from 'react-router-dom'
-import { firebase } from '../firebase/firebase';
-import Form from './Form';
-
+import firebase from '../firebase/firebase';
+import AddTask from './AddForm';
+import TaskItem from './FormItem';
 const styles = theme => ({
     main: {
         width: 'auto',
@@ -60,7 +60,8 @@ const Dashboard = props => {
                     Signout
         </Button>
             </Paper>
-            <Form />
+            <AddTask />
+            <TaskItem />
         </main>
     )
 }

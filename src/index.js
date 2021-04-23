@@ -4,7 +4,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import configureStore from './store/store';
 import { login, logout } from './actions/auth';
-import { firebase } from './firebase/firebase';
+import firebase from './firebase/firebase';
 import App from './component/App';
 //import history from './component/App';
 import createHistory from 'history/createBrowserHistory';
