@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import uuid from 'react-uuid';
 import { useSelector, useDispatch } from 'react-redux';
-import { database } from '../firebase/firebase';
+import database from '../firebase/firebase';
 
 
-const AddTasks = () => {
+const AddForm = () => {
 
     const dispatch = useDispatch();
-    // const newLocal = null;
-    //const [selectedDate, setSelectedDate] = useState(newLocal);
+    const newLocal = null;
+    const [selectedDate, setSelectedDate] = useState(newLocal);
     const [task, setTask] = useState('');
-    // const date = new Date()
+    const date = new Date()
     const userId = useSelector(state => state.auth.user.uid);
 
 
     const addTask = () => {
-        const payload = { id: uuid(), text: task }
+        const payload = { id: uuid(), text: task, completed: false, addedAt: selectedDate.toString() }
+
         const dbtasksWrapper = database.ref().child(userId).child('tasks');
         return dbtasksWrapper.child(payload.id).update(payload).then(() => {
             setTask('');
@@ -43,4 +44,4 @@ const AddTasks = () => {
 };
 
 
-export default AddTasks;
+export default AddForm;

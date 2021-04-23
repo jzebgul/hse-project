@@ -3,8 +3,8 @@ import { Typography, Paper, Button } from '@material-ui/core'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { Link, withRouter } from 'react-router-dom'
 import firebase from '../firebase/firebase';
-import AddTask from './AddForm';
-import TaskItem from './FormItem';
+import AddForm from './AddForm';
+import FormItem from './FormItem';
 const styles = theme => ({
     main: {
         width: 'auto',
@@ -60,8 +60,8 @@ const Dashboard = props => {
                     Signout
         </Button>
             </Paper>
-            <AddTask />
-            <TaskItem />
+            <AddForm />
+            <FormItem />
         </main>
     )
 }
