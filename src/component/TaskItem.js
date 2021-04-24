@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import AddTasks from './AddTasks';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import database from '../firebase/firebase';
+import uuid from 'react-uuid';
 
-const FormItem = (props) => {
+const TaskItem = (props) => {
     const dispatch = useDispatch();
     const [task, setTask] = useState(props.task);
     const [index, setIndex] = useState(props.index);
@@ -12,7 +14,7 @@ const FormItem = (props) => {
     const [editing, setEditing] = useState(false);
     const [currentTask, setCurrentTask] = useState({});
     const date = new Date()
-    const userId = useSelector(state => state.auth.user.uid);
+    const userId = useSelector(state => state.auth.uid);
 
     const saveTask = () => {
         setEditing(false);
@@ -63,6 +65,10 @@ const FormItem = (props) => {
             <div>
                 {
                     !task.completed ? <p></p> : <p className="alert alert-danger" >Task Completed </p>
+
+                    // <div>
+                    //     {/* {Object.values(task.completed.toString()).length }  */}
+                    // </div>
                 }
             </div>
             <div className="border">
@@ -109,4 +115,4 @@ const FormItem = (props) => {
     )
 }
 
-export default FormItem;
+export default TaskItem;

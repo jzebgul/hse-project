@@ -43,8 +43,8 @@ const Login = props => {
 
     const onLogin = async () => {
         dispatch(startLogin(email, password));
-        // setPassword('');
-        // setEmail('');
+        setPassword('');
+        setEmail('');
         props.history.push('/dashboard');
 
     }
@@ -70,6 +70,8 @@ const Login = props => {
                         color="primary"
                         onClick={onLogin}
                         className={classes.submit}
+                        component={Link}
+                        to="/dashboard"
                     >
                         Sign in
           			</Button>

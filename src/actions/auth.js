@@ -13,7 +13,7 @@ export const startLogin = (email, password) => {
     return () => {
         return firebase.auth().signInWithEmailAndPassword(email, password)
             .then(() => {
-                //props.history.push('/dashboard');
+                history.push('/dashboard');
             });
 
     };

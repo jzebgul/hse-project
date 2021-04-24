@@ -3,8 +3,8 @@ import { Typography, Paper, Button } from '@material-ui/core'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { Link, withRouter } from 'react-router-dom'
 import firebase from '../firebase/firebase';
-import AddForm from './AddForm';
-import FormItem from './FormItem';
+import AddTasks from './AddTasks';
+import TasksList from './TasksList'
 const styles = theme => ({
     main: {
         width: 'auto',
@@ -38,7 +38,7 @@ const Dashboard = props => {
     const { classes } = props
     const onSignout = async (e) => {
         await firebase.auth().signOut()
-        props.history.push('/')
+        //props.history.push('/')
     }
 
     return (
@@ -60,8 +60,8 @@ const Dashboard = props => {
                     Signout
         </Button>
             </Paper>
-            <AddForm />
-            <FormItem />
+            <AddTasks />
+            <TasksList />
         </main>
     )
 }
