@@ -8,8 +8,7 @@ import TaskItem from "./TaskItem";
 
 const TasksList = () => {
     const tasks = useSelector(state => state.tasks);
-    const userId = useSelector(state => state.auth.uid);
-
+    //const userId = useSelector(state => state.auth.uid);
     return (
         <div>
             <div>Todo List Items</div>

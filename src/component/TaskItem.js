@@ -15,7 +15,6 @@ const TaskItem = (props) => {
     const [currentTask, setCurrentTask] = useState({});
     const date = new Date()
     const userId = useSelector(state => state.auth.uid);
-
     const saveTask = () => {
         setEditing(false);
         const payload = { id: currentTask.id, text: currentTask.text, completed: false, addedAt: selectedDate }

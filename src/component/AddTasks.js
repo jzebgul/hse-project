@@ -13,7 +13,7 @@ const AddTasks = () => {
     const [selectedDate, setSelectedDate] = useState(newLocal);
     const [task, setTask] = useState('');
     const date = new Date()
-    const userId = useSelector(state => state.auth.uid);
+    const userId = useSelector(state => state.auth.currentUser);
 
 
     const addTask = () => {
