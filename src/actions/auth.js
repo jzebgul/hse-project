@@ -1,8 +1,10 @@
-import firebase from '../firebase/firebase';
+import {firebase} from '../firebase/firebase';
 import 'firebase/auth';
 import 'firebase/firestore';
 import auth from 'firebase/app'
 import { history } from '../component/App';
+import {browserHistory} from '../index';
+
 export const login = (user) => ({
     type: 'LOGIN',
     user
@@ -11,11 +13,9 @@ export const login = (user) => ({
 export const startLogin = (email, password) => {
     //const { email, password } = props
     return () => {
-        return firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(() => {
-                history.push('/dashboard');
-            });
-
+        return firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
+            browserHistory.push('/dashboard')
+        });
     };
 };
 

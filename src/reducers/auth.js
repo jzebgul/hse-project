@@ -2,7 +2,8 @@ const reducer = (state = {}, action) => {
     switch (action.type) {
         case 'LOGIN':
             return {
-                user: action.user
+                uid: action.user.uid,
+                name: action.user.displayName,
             };
         case 'LOGOUT':
             return {};

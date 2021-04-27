@@ -45,8 +45,6 @@ const Login = props => {
         dispatch(startLogin(email, password));
         setPassword('');
         setEmail('');
-        props.history.push('/dashboard');
-
     }
     return (
         <main className={classes.main}>

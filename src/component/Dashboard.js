@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Typography, Paper, Button } from '@material-ui/core'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { Link, withRouter } from 'react-router-dom'
-import firebase from '../firebase/firebase';
+import {firebase} from '../firebase/firebase';
+import { useSelector, useDispatch } from 'react-redux';
 import AddTasks from './AddTasks';
-import TasksList from './TasksList'
+import TasksList from './TasksList';
+
 const styles = theme => ({
     main: {
         width: 'auto',
@@ -40,12 +42,13 @@ const Dashboard = props => {
         await firebase.auth().signOut()
         //props.history.push('/')
     }
+    const username = useSelector(state => state.auth.name);
 
     return (
         <main className={classes.main}>
             <Paper className={classes.paper}>
                 <Typography component="h1" variant="h5">
-                    {`Welcome User ${firebase.auth().currentUser.displayName}`}
+                    {`Welcome User ${username ? username : ''}`}
                 </Typography>
                 <Button
                     type="submit"
