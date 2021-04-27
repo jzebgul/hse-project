@@ -14,7 +14,7 @@ export const startLogin = (email, password) => {
     //const { email, password } = props
     return () => {
         return firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-            browserHistory.push('/dashboard')
+            // browserHistory.push('/dashboard');
         });
     };
 };

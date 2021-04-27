@@ -1,22 +1,15 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Login from './Login';
 
-const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
-    const currentUser = useSelector(state => state.auth.uid);
+const PrivateRoute = ({ component, ...options }) => {
+    const currentUser = useSelector(state => !!state.auth.uid);
 
-    console.log(currentUser);
+    const finalComponent = currentUser ? component : Login;
 
     return (
-        <Route
-            {...rest}
-            render={props => currentUser ?
-                (
-                    <RouteComponent {...props} />
-                ) : (
-                    <Redirect to={'/login'} />
-                )}
-        />
+        <Route {...options} component={finalComponent}/>
     )
 }
 export default PrivateRoute;

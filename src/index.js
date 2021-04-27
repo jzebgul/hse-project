@@ -7,7 +7,7 @@ import { login, logout } from './actions/auth';
 import {firebase} from './firebase/firebase';
 import App from './component/App';
 
-import { createBrowserHistory } from 'history';
+import { createBrowserHistory } from "history";
 
 
 //import history from './component/App';
@@ -34,7 +34,9 @@ renderApp();
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user));
+    browserHistory.push('/dashboard');
   } else {
     store.dispatch(logout());
+    browserHistory.push('/');
   }
 });
