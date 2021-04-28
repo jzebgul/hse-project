@@ -19,6 +19,9 @@ const tasks = (state = {}, action) => {
         case 'SET_TASKS':
             return action.tasks;
 
+        case 'CLEAR_TASKS':
+            return {};
+
 
         default:
             return state
