@@ -30,7 +30,7 @@ export const startRegister = (name, email, password) => {
                 user.updateProfile({
                     displayName: name,
                 }).then(function () {
-                    console.log('Updated');
+                    console.log('Updated User');
                     // Update successful.
                 }).catch(function (error) {
                     // An error happened.
@@ -45,8 +45,6 @@ export const startRegister = (name, email, password) => {
                 console.log(errorMessage);
                 // ..
             });
-
-
     };
 };
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useSelector, useDispatch } from 'react-redux';
 import database from '../firebase/firebase';
 import TaskItem from "./TaskItem";
+import { fetchTasks } from '../actions/taskActions';
 
 
 // import reducer from '../reducer';
@@ -12,15 +13,7 @@ const TasksList = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const fetchTasks = () => {
-            const dbtasksWrapper = database.ref().child(userId).child('tasks');
-            dbtasksWrapper.on('value', snap => {
-                const tasks = snap.val();
-                dispatch({ type: 'SET_TASKS', tasks })
-            });
-        };
-
-        fetchTasks();
+        dispatch(fetchTasks(userId));
     }, [])
 
     //const userId = useSelector(state => state.auth.uid);
